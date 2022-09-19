@@ -1,5 +1,44 @@
 <resources>
-    <string name="app_name">HW04</string>
+    <string name="app_name">GROUP9_HW04</string>
+    <string name="weight">Weight (lbs):</string>
+    <string name="weight_text"></string>
+    <string name="gender_title">Gender:</string>
+    <string name="female_radio">Female</string>
+    <string name="male_radio">Male</string>
+    <string name="set_weight">Set</string>
+    <string name="cancel">Cancel</string>
+    <string name="weight_2">Weight:</string>
+    <string name="weight_display">N/A</string>
+    <string name="set">Set</string>
+    <string name="drink_size">Drink Size</string>
+    <string name="one_oz">1 oz</string>
+    <string name="five_oz">5 oz</string>
+    <string name="twelve_oz">12 oz</string>
+    <string name="alcohol_title">Alcohol %:</string>
+    <string name="reset_button">Reset</string>
+    <string name="add_drink">Add Drink</string>
+    <string name="num_drinks_title"># Drinks:</string>
+    <string name="num_drinks">0</string>
+    <string name="BAC_level">BAC Level:</string>
+    <string name="BAC_num">0.000</string>
+    <string name="status_title">Your Status:</string>
+    <string name="status">You\'re safe.</string>
+    <string name="status2">Be careful.</string>
+    <string name="status3">Over the limit!</string>
+    <string name="weight_message">Enter weight</string>
+    <string name="view_drinks">View Drinks</string>
+    <string name="view_drinks_drink">Drink</string>
+    <string name="view_drinks_x">1</string>
+    <string name="view_drink_outOf">out of</string>
+    <string name="view_drink_total">1</string>
+    <string name="view_drinks_ozCount">1</string>
+    <string name="view_drinks_oz">oz</string>
+    <string name="view_drinks_percent">0</string>
+    <string name="view_drinks_alcohol">% Alcohol</string>
+    <string name="view_drinks_added">Added</string>
+    <string name="view_drinks_date">08/30/2022</string>
+    <string name="view_drinks_time">05:30 PM</string>
+    <string name="view_drinks_close">Close</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

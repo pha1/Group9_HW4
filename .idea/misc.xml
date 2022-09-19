@@ -5,6 +5,9 @@
       <map>
         <entry key="..\:/Users/Phi/AndroidStudioProjects/Group9_HW4/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/Phi/AndroidStudioProjects/Group9_HW4/app/src/main/res/layout/fragment_add_drink.xml" value="0.3625" />
+        <entry key="..\:/Users/Phi/AndroidStudioProjects/Group9_HW4/app/src/main/res/layout/fragment_bac.xml" value="0.3625" />
+        <entry key="..\:/Users/Phi/AndroidStudioProjects/Group9_HW4/app/src/main/res/layout/fragment_set_profile.xml" value="0.3625" />
+        <entry key="..\:/Users/Phi/AndroidStudioProjects/Group9_HW4/app/src/main/res/layout/fragment_view_drinks.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.31145833333333334" />
         <entry key="app/src/main/res/layout/fragment_add_drink.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/fragment_bac.xml" value="0.328125" />

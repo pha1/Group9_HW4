@@ -1,14 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SetProfileFragment">
+    tools:context=".fragments.SetProfileFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".SetProfileActivity"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="-50dp">
 
-</FrameLayout>
+        <RadioGroup
+            android:id="@+id/gender_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gender"
+            app:layout_constraintTop_toTopOf="@+id/gender">
+
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="101dp"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:text="@string/female_radio" />
+
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="@string/male_radio" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/weight"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editWeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/weight_message"
+            android:inputType="number"
+            android:text="@string/weight_text"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/weight"
+            app:layout_constraintTop_toTopOf="@+id/weight" />
+
+        <Button
+            android:id="@+id/cancelSetProfile"
+            android:layout_width="183dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <Button
+            android:id="@+id/setWeight"
+            android:layout_width="183dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/set_weight"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.929"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/gender_title"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/weight"
+            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintStart_toStartOf="@+id/weight"
+            app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
