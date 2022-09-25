@@ -17,10 +17,9 @@
         android:id="@+id/textViewPercent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="@string/view_drinks_percent"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewDrink"
-        app:layout_constraintStart_toEndOf="@+id/imageViewDrink"
+        app:layout_constraintStart_toStartOf="@+id/dateAndTime"
         app:layout_constraintTop_toTopOf="@+id/imageViewDrink" />
 
     <TextView

@@ -36,9 +36,11 @@ import edu.uncc.Group9_HW4.models.Drink;
  * Use the {@link ViewDrinksFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewDrinksFragment extends Fragment {
+public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAdapter.IDrinkRecycler {
 
     FragmentViewDrinksBinding binding;
+
+    final static String TAG = "test";
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_DRINKS = "drinks_list";
@@ -110,51 +112,11 @@ public class ViewDrinksFragment extends Fragment {
         recyclerViewDrinksList.setLayoutManager(layoutManager);
 
         // Adapter
-        adapter = new DrinkRecyclerViewAdapter(drinks);
+        adapter = new DrinkRecyclerViewAdapter(drinks, this);
 
         // Set the adapter
         recyclerViewDrinksList.setAdapter(adapter);
 
-
-        // TODO This needs to be moved to the DRINK ADAPTER
-        /*
-        // Click the trash icon to delete the current drink and then show the previous drink
-        binding.trashButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Remove the current drink, send and delete it from Main Activity
-                removedDrink = drinks.remove(current);
-                mListener.deleteDrink(removedDrink);
-
-                Log.d("TEST", "onClick: Number of drinks: " + drinks.size());
-
-                // AFTER REMOVING THE DRINK, CHECK THE ARRAY TO SEE IF THERE ARE MORE DRINKS
-
-                // If there are drinks in the list
-                if (drinks.size() > 0) {
-                    // One drink left, set current to 0 index
-                    if (drinks.size() ==  1) {
-                        current = 0;
-                        // If there are more than one drink left
-                    } else if (drinks.size() > 1) {
-                        // If the current drink is the first drink, show the last
-                        if (current == 0) {
-                            current = drinks.size() - 1;
-                            // Show the previous drink
-                        } else {
-                            current--;
-                        }
-                    }
-                    drink = drinks.get(current);
-                }
-                // If there are no drinks in the list
-                // Send the updated drink list (empty list)
-                else {
-                    mListener.emptyList(drinks);
-                }
-            }
-        });
-         */
 
         // The close button finishes the activity without returning any extras
         binding.closeViewDrinks.setOnClickListener(new View.OnClickListener() {
@@ -178,9 +140,12 @@ public class ViewDrinksFragment extends Fragment {
 
     IListener mListener;
 
+    @Override
+    public void deleteDrink(Drink drink) {
+        adapter.notifyDataSetChanged();
+    }
+
     public interface IListener{
-        void deleteDrink(Drink drink);
-        void emptyList(ArrayList<Drink> drinks);
         void closeViewDrinks(ArrayList<Drink> drinks);
     }
 }

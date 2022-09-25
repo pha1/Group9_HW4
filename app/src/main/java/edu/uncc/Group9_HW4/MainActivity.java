@@ -23,7 +23,7 @@ import edu.uncc.Group9_HW4.fragments.ViewDrinksFragment;
 import edu.uncc.Group9_HW4.models.Drink;
 import edu.uncc.Group9_HW4.models.Profile;
 
-public class MainActivity extends AppCompatActivity implements BACFragment.IListener, SetProfileFragment.IListener, AddDrinkFragment.IListener, ViewDrinksFragment.IListener{
+public class MainActivity extends AppCompatActivity implements BACFragment.IListener, SetProfileFragment.IListener, AddDrinkFragment.IListener, ViewDrinksFragment.IListener, DrinkRecyclerViewAdapter.IDrinkRecycler{
     ActivityMainBinding binding;
 
     final static String TAG = "test";
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements BACFragment.IList
     Profile profile;
 
     BACFragment bacCalculator = new BACFragment();
+    ViewDrinksFragment viewDrinksFragment = new ViewDrinksFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,21 +98,8 @@ public class MainActivity extends AppCompatActivity implements BACFragment.IList
      */
     @Override
     public void deleteDrink(Drink drink) {
+        Log.d(TAG, "deleteDrink: " + drink.getDrinkSize());
         this.drinks.remove(drink);
-    }
-
-    /**
-     * This method implements the emptyList method from ViewDrinksFragment
-     * It receives the drinks list from ViewDrinksFragment and stores it in the Main Activity,
-     * then send the updated drink list to BAC Calculator Fragment
-     * @param drinks ArrayList of Drink objects
-     */
-    @Override
-    public void emptyList(ArrayList<Drink> drinks) {
-        this.drinks = drinks;
-        bacCalculator = (BACFragment) getSupportFragmentManager().findFragmentByTag("BAC Calculator Fragment");
-        bacCalculator.updateDrinksList(this.drinks);
-        getSupportFragmentManager().popBackStack();
     }
 
     /**
