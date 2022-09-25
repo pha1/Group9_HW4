@@ -117,6 +117,49 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
         // Set the adapter
         recyclerViewDrinksList.setAdapter(adapter);
 
+        // TODO Implement Ascending order by Alcohol percentage
+        binding.ascendByAlcohol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Algorithm to sort
+
+                // Notify data set change
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        // TODO Implement Descending order by Alcohol percentage
+        binding.descendByAlcohol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Algorithm to sort
+
+                // Notify data set change
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        // TODO Implement Ascending order by Date
+        binding.ascendByDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Algorithm to sort
+
+                // Notify data set change
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        // TODO Implement Descending order by Date
+        binding.descendByDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO Algorithm to sort
+
+                // Notify data set change
+                adapter.notifyDataSetChanged();
+            }
+        });
 
         // The close button finishes the activity without returning any extras
         binding.closeViewDrinks.setOnClickListener(new View.OnClickListener() {
