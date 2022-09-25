@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GROUP9_HW04</string>
+    <string name="app_name">BAC Calculator</string>
     <string name="weight">Weight (lbs):</string>
     <string name="weight_text"></string>
     <string name="gender_title">Gender:</string>
@@ -39,6 +39,6 @@
     <string name="view_drinks_date">08/30/2022</string>
     <string name="view_drinks_time">05:30 PM</string>
     <string name="view_drinks_close">Close</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sort_by_alcohol">Sort by Alcohol %:</string>
+    <string name="sort_by_date">Sort by Date Added:</string>
 </resources>

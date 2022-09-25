@@ -34,6 +34,7 @@ import edu.uncc.Group9_HW4.models.Profile;
 public class SetProfileFragment extends Fragment {
     FragmentSetProfileBinding binding;
 
+    final static String TAG = "test";
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_TITLE = "title";
@@ -114,9 +115,10 @@ public class SetProfileFragment extends Fragment {
                 try {
                     // Check if the value can be parsed into an int
                     weight = Double.parseDouble(editWeight.getText().toString());
+                    Log.d(TAG, "onClick: " + weight);
 
                     // If the number is less than 0, show the Toast message
-                    if (weight < 0) {
+                    if (weight < 0.0) {
                         throw new IllegalArgumentException();
                     }
 

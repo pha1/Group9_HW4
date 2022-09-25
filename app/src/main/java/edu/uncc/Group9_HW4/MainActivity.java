@@ -26,6 +26,7 @@ import edu.uncc.Group9_HW4.models.Profile;
 public class MainActivity extends AppCompatActivity implements BACFragment.IListener, SetProfileFragment.IListener, AddDrinkFragment.IListener, ViewDrinksFragment.IListener{
     ActivityMainBinding binding;
 
+    final static String TAG = "test";
     public static ArrayList<Drink> drinks = new ArrayList<>();
     Profile profile;
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements BACFragment.IList
         setContentView(binding.getRoot());
 
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.containerView, new BACFragment())
+                .add(R.id.containerView, new BACFragment(), "BAC Calculator Fragment")
                 .commit();
     }
 

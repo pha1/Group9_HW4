@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageViewDrink"
+        android:layout_width="28dp"
+        android:layout_height="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_drink" />
+
+    <TextView
+        android:id="@+id/textViewPercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/view_drinks_percent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewDrink"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDrink"
+        app:layout_constraintTop_toTopOf="@+id/imageViewDrink" />
+
+    <TextView
+        android:id="@+id/textViewAdded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/view_drinks_added"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewDrink" />
+
+    <TextView
+        android:id="@+id/dateAndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/view_drinks_date"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAdded"
+        app:layout_constraintStart_toEndOf="@+id/textViewAdded"
+        app:layout_constraintTop_toTopOf="@+id/textViewAdded" />
+
+    <TextView
+        android:id="@+id/textViewOz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/view_drinks_oz"
+        app:layout_constraintBottom_toTopOf="@+id/trashIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/trashIcon"
+        android:layout_width="42dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/dateAndTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dateAndTime"
+        app:srcCompat="@drawable/ic_trash" />
+
+    <TextView
+        android:id="@+id/textViewDrinkSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_drinks_ozCount"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewOz"
+        app:layout_constraintEnd_toStartOf="@+id/textViewOz"
+        app:layout_constraintTop_toTopOf="@+id/textViewOz" />
+
+    <TextView
+        android:id="@+id/textViewPercentAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_drinks_alcohol"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPercent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPercent"
+        app:layout_constraintTop_toTopOf="@+id/textViewPercent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

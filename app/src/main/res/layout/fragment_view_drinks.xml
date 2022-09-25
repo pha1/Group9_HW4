@@ -7,16 +7,82 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ViewDrinksFragment">
 
+    <ImageView
+        android:id="@+id/descendByDate"
+        android:layout_width="52dp"
+        android:layout_height="67dp"
+        android:src="@drawable/ic_sort_descending"
+        app:layout_constraintEnd_toEndOf="@+id/descendByAlcohol"
+        app:layout_constraintStart_toEndOf="@+id/ascendByAlcohol"
+        app:layout_constraintTop_toBottomOf="@+id/descendByAlcohol" />
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/ascendByDate"
+        android:layout_width="78dp"
+        android:layout_height="51dp"
+        android:src="@drawable/ic_sort_ascending"
+        app:layout_constraintBottom_toBottomOf="@+id/descendByDate"
+        app:layout_constraintEnd_toStartOf="@+id/descendByDate"
+        app:layout_constraintTop_toTopOf="@+id/descendByDate" />
+
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/sortByAlcohol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/sort_by_alcohol"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sortByDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/sort_by_date"
+        app:layout_constraintBottom_toBottomOf="@+id/ascendByDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ascendByDate" />
+
+    <ImageView
+        android:id="@+id/ascendByAlcohol"
+        android:layout_width="73dp"
+        android:layout_height="53dp"
+        android:src="@drawable/ic_sort_ascending"
+        app:layout_constraintBottom_toBottomOf="@+id/descendByAlcohol"
+        app:layout_constraintEnd_toStartOf="@+id/descendByAlcohol"
+        app:layout_constraintTop_toTopOf="@+id/descendByAlcohol" />
+
+    <ImageView
+        android:id="@+id/descendByAlcohol"
+        android:layout_width="57dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_sort_descending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/closeViewDrinks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/view_drinks_close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewDrinksList"
+        android:layout_width="391dp"
+        android:layout_height="483dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/closeViewDrinks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descendByDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

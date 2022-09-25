@@ -13,16 +13,20 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import edu.uncc.Group9_HW4.DrinkRecyclerViewAdapter;
 import edu.uncc.Group9_HW4.R;
 import edu.uncc.Group9_HW4.databinding.FragmentViewDrinksBinding;
 import edu.uncc.Group9_HW4.models.Drink;
@@ -78,6 +82,7 @@ public class ViewDrinksFragment extends Fragment {
         }
         getActivity().setTitle(getResources().getString(R.string.view_drinks));
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,36 +92,32 @@ public class ViewDrinksFragment extends Fragment {
         return binding.getRoot();
     }
 
+    RecyclerView recyclerViewDrinksList;
+    LinearLayoutManager layoutManager;
+    DrinkRecyclerViewAdapter adapter;
+
     // Function codes go here
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Initial Drink display
-        drink = drinks.get(current);
-        updateUI();
+        // Recycler View
+        recyclerViewDrinksList = binding.recyclerViewDrinksList;
+        recyclerViewDrinksList.setHasFixedSize(true);
 
-        // Click next to get the next drink in the ArrayList
-        // If the current drink is the last drink then show the first drink next
-        binding.nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Check to see if current drink is the last drink in the list
-                // if it is move to the first drink
-                if (drinks.get(current).equals(drinks.get(drinks.size()-1))){
-                    current = 0;
-                    drink = drinks.get(0);
-                }
-                // if not, next drink
-                else {
-                    current++;
-                    drink = drinks.get(current);
-                }
-                // Update UI based on new drink position
-                updateUI();
-            }
-        });
+        // Layout Manager
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewDrinksList.setLayoutManager(layoutManager);
 
+        // Adapter
+        adapter = new DrinkRecyclerViewAdapter(drinks);
+
+        // Set the adapter
+        recyclerViewDrinksList.setAdapter(adapter);
+
+
+        // TODO This needs to be moved to the DRINK ADAPTER
+        /*
         // Click the trash icon to delete the current drink and then show the previous drink
         binding.trashButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,41 +146,18 @@ public class ViewDrinksFragment extends Fragment {
                         }
                     }
                     drink = drinks.get(current);
-                    // Update UI based on new drink position
-                    updateUI();
                 }
                 // If there are no drinks in the list
                 // Send the updated drink list (empty list)
                 else {
                     mListener.emptyList(drinks);
                 }
-
             }
         });
-
-        // Click the previous button to get the previous drink in the ArrayList
-        // If the current drink is the first drink, show the last drink
-        binding.previousButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // If this is the first drink
-                // Display the last drink in the list
-                if(drinks.get(current).equals(drinks.get(0))){
-                    current = drinks.size() - 1;
-                    drink = drinks.get(drinks.size()-1);
-                }
-                // Show the previous drink
-                else{
-                    current--;
-                    drink = drinks.get(current);
-                }
-                // Update the UI based on new position
-                updateUI();
-            }
-        });
+         */
 
         // The close button finishes the activity without returning any extras
-        binding.closeButton.setOnClickListener(new View.OnClickListener() {
+        binding.closeViewDrinks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.closeViewDrinks(drinks);
@@ -187,29 +165,6 @@ public class ViewDrinksFragment extends Fragment {
         });
     }
 
-    /**
-     * Update the TextView values to the new position
-     */
-    public void updateUI(){
-
-        currentDrink = binding.textviewCurrentDrink;
-        currentDrink.setText(String.valueOf(current + 1));
-
-        totalDrinks = binding.textViewTotalDrinks;
-        totalDrinks.setText(String.valueOf(drinks.size()));
-
-        drinkSize = binding.textviewDrinkSize;
-        drinkSize.setText(String.valueOf(drink.getDrinkSize()));
-
-        alcoholPercentage = binding.textViewPercentage;
-        alcoholPercentage.setText(String.valueOf(drink.alcohol_percentage));
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss aa");
-        String dateAddedOn = simpleDateFormat.format(drink.getAddedOn());
-
-        date = binding.textViewDateTime;
-        date.setText(dateAddedOn);
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {

@@ -35,6 +35,9 @@ import edu.uncc.Group9_HW4.models.Profile;
  */
 public class BACFragment extends Fragment {
     FragmentBacBinding binding;
+
+    final static String TAG = "test";
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_TITLE = "title";
 
@@ -94,7 +97,7 @@ public class BACFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Set the Title of the Action
-        getActivity().setTitle(title);
+        getActivity().setTitle(getResources().getString(R.string.app_name));
 
         weightDisplay = binding.weightDisplay;
         numDrinkDisplay = binding.numDrinkDisplay;
@@ -144,10 +147,10 @@ public class BACFragment extends Fragment {
 
         // A profile is created only when weight and gender is set
         // The profile is default at 0, so any changes will indicate there is a profile set
-        if (profile.getWeight() > 0){
+        if (profile != null){
             // Displays the weight and gender of the profile
             String weightGender;
-            weightGender = profile.getWeight() + " lbs (" + profile.getGender() + ")";
+            weightGender = String.format("%.0f", profile.getWeight()) + " lbs (" + profile.getGender() + ")";
             weightDisplay.setText(weightGender);
         }
 
@@ -189,6 +192,7 @@ public class BACFragment extends Fragment {
      * @param profile The updated profile of the user
      */
     public void updateProfile(Profile profile) {
+        Log.d(TAG, "updateProfile: " + profile.getWeight());
         this.profile = profile;
     }
 
