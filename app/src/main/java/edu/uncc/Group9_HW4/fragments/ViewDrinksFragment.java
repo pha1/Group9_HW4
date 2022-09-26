@@ -25,6 +25,8 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import edu.uncc.Group9_HW4.DrinkRecyclerViewAdapter;
 import edu.uncc.Group9_HW4.R;
@@ -122,9 +124,14 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
             @Override
             public void onClick(View view) {
                 // TODO Algorithm to sort
-
-                // Notify data set change
-                adapter.notifyDataSetChanged();
+                Collections.sort(drinks, new Comparator<Drink>() {
+                            @Override
+                            public int compare(Drink drink, Drink t1) {
+                                return Double.compare(drink.getAlcoholPercentage(), t1.getAlcoholPercentage());
+                            }
+                        });
+                        // Notify data set change
+                        adapter.notifyDataSetChanged();
             }
         });
 
