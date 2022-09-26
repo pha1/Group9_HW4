@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,15 +53,6 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
 
     public static ArrayList<Drink> drinks = new ArrayList<Drink>();
 
-    public int current = 0;
-    public Drink drink = new Drink();
-    public Drink removedDrink = new Drink();
-
-    TextView currentDrink;
-    TextView totalDrinks;
-    TextView drinkSize;
-    TextView alcoholPercentage;
-    TextView date;
 
     public ViewDrinksFragment() {
         // Required empty public constructor
@@ -102,8 +94,7 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
     RecyclerView recyclerViewDrinksList;
     LinearLayoutManager layoutManager;
     DrinkRecyclerViewAdapter adapter;
-
-    // Function codes go here
+    
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -119,14 +110,15 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
         // Adapter
         adapter = new DrinkRecyclerViewAdapter(drinks, this);
 
+        recyclerViewDrinksList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+
         // Set the adapter
         recyclerViewDrinksList.setAdapter(adapter);
 
-        // TODO Implement Ascending order by Alcohol percentage
+        // Ascending order by Alcohol percentage
         binding.ascendByAlcohol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Algorithm to sort
                 Collections.sort(drinks, new Comparator<Drink>() {
                             @Override
                             public int compare(Drink drink, Drink t1) {
@@ -138,11 +130,10 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
             }
         });
 
-        // TODO Implement Descending order by Alcohol percentage
+        // Descending order by Alcohol percentage
         binding.descendByAlcohol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Algorithm to sort
                 Collections.sort(drinks, new Comparator<Drink>() {
                     @Override
                     public int compare(Drink drink, Drink t1) {
@@ -155,7 +146,7 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
             }
         });
 
-        // TODO Implement Ascending order by Date
+        // Ascending order by Date
         binding.ascendByDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,7 +161,7 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
             }
         });
 
-        // TODO Implement Descending order by Date
+        // Descending order by Date
         binding.descendByDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -208,15 +199,18 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
     IListener mListener;
 
 
-
-
-
+    /**
+     * This method is implemented for the interface in DrinkRecyclerViewAdapter, in which it will
+     * update the RecyclerView List when a drink is deleted
+     * @param drink The Drink object to be deleted by the Main Activity
+     */
     @Override
     public void deleteDrink(Drink drink) {
         adapter.notifyDataSetChanged();
     }
 
     public interface IListener{
+        // MainActivity will update the ArrayList of Drinks
         void closeViewDrinks(ArrayList<Drink> drinks);
     }
 
