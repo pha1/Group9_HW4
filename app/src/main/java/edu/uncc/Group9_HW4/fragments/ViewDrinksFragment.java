@@ -33,6 +33,9 @@ import edu.uncc.Group9_HW4.R;
 import edu.uncc.Group9_HW4.databinding.FragmentViewDrinksBinding;
 import edu.uncc.Group9_HW4.models.Drink;
 
+import java.util.Collections;
+
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ViewDrinksFragment#newInstance} factory method to
@@ -156,8 +159,12 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
         binding.ascendByDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Algorithm to sort
-
+                Collections.sort(drinks, new Comparator<Drink>() {
+                    @Override
+                    public int compare(Drink drink, Drink t1) {
+                        return drink.getAddedOn().compareTo(t1.getAddedOn());
+                    }
+                });
                 // Notify data set change
                 adapter.notifyDataSetChanged();
             }
@@ -167,8 +174,12 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
         binding.descendByDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO Algorithm to sort
-
+                Collections.sort(drinks, new Comparator<Drink>() {
+                    @Override
+                    public int compare(Drink drink, Drink t1) {
+                        return -1*drink.getAddedOn().compareTo(t1.getAddedOn());
+                    }
+                });
                 // Notify data set change
                 adapter.notifyDataSetChanged();
             }
@@ -196,6 +207,10 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
 
     IListener mListener;
 
+
+
+
+
     @Override
     public void deleteDrink(Drink drink) {
         adapter.notifyDataSetChanged();
@@ -204,4 +219,7 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
     public interface IListener{
         void closeViewDrinks(ArrayList<Drink> drinks);
     }
+
+
+
 }
