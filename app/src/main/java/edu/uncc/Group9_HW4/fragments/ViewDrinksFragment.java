@@ -140,6 +140,12 @@ public class ViewDrinksFragment extends Fragment implements DrinkRecyclerViewAda
             @Override
             public void onClick(View view) {
                 // TODO Algorithm to sort
+                Collections.sort(drinks, new Comparator<Drink>() {
+                    @Override
+                    public int compare(Drink drink, Drink t1) {
+                        return -1 * Double.compare(drink.getAlcoholPercentage(), t1.getAlcoholPercentage());
+                    }
+                });
 
                 // Notify data set change
                 adapter.notifyDataSetChanged();

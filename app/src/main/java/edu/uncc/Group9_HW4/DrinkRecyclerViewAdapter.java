@@ -1,3 +1,9 @@
+/**
+ * Homework 4
+ * Group9_HW4
+ * Phi Ha
+ * Srinath Dittakavi
+ */
 package edu.uncc.Group9_HW4;
 
 import android.text.Layout;
